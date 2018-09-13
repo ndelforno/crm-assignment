@@ -17,7 +17,7 @@ class CRM
   end
 
   def add_new_contact
-
+    
   end
 
   def modify_existing_contact
@@ -29,11 +29,11 @@ class CRM
   end
 
   def display_all_contacts
-    
+
   end
 
   def search_by_attribute
-    
+
   end
 
 
