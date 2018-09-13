@@ -90,9 +90,9 @@ class Contact
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
   def update(attribute,value)
-      if attribute == "first_name"
+      if attribute == "first name"
         @first_name = value
-      elsif attribute == "last_name"
+      elsif attribute == "last name"
         @last_name = value
       elsif attribute == "email"
         @email = value
@@ -108,14 +108,15 @@ class Contact
   def self.find_by(attribute)
     @@contacts_list.each do |contact|
       if contact.full_name.include?(attribute) || contact.email.include?(attribute)
-        return contact
+        return  puts contact.full_name
       end
     end
+    puts "no result"
   end
 
   # This method should delete all of the contacts
   def self.delete_all
-    @@contacts_list = []
+    @@contacts_list.clear
   end
 
   def full_name
@@ -134,13 +135,15 @@ class Contact
 # Feel free to add other methods here, if you need them.
 end
 
-contact1 = Contact.create("nick", "delfo", "nick@hotmail.com", "nothing for now")
+Contact.create("nick", "delfo", "nick@hotmail.com", "nothing for now")
 Contact.create("dan", "meyer", "dan@gmail.com", "need to be contacted")
 Contact.create("chris", "ford", "chris@telus.com", "N/A")
-#puts Contact.all.inspect
-#puts Contact.find(2).inspect
-# puts Contact.find_by("ford").inspect
-# Contact.delete(2)
+# #puts Contact.all.inspect
+# #puts Contact.find(2).inspect
+# # puts Contact.find_by("ford").inspect
+# # Contact.delete(2)
+# # puts Contact.all.inspect
+# #contact1.update("first_name","john")
 # puts Contact.all.inspect
-contact1.update("first_name","john")
-puts Contact.all.inspect
+
+#Contact.find(1)
