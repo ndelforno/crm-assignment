@@ -82,6 +82,10 @@ class CRM
 
 
 end
+
+at_exit do
+  ActiveRecord::Base.connection.close
+end
 a_crm_app = CRM.new ("My CRM")
 a_crm_app.main_menu
 # puts Contact.all.inspect
