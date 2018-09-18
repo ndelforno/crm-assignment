@@ -58,14 +58,13 @@ class CRM
   end
 
   def modify_existing_contact
-    puts "What is the id of the contact you want to edit ?"
-    id = gets.chomp.to_i
-    p contact = Contact.find(id)
+    contact = search_by_attribute
     puts "what do you wants to change ?"
-    attribute = gets.chomp.to_s
+    key = gets.chomp.to_sym
     puts "What is the new value ?"
     value = gets.chomp.to_s
-    contact.update(attribute,value)
+    argu = {key => value}
+    contact.update(argu)
   end
 
   def delete_contact
@@ -79,9 +78,12 @@ class CRM
   end
 
   def search_by_attribute
+    puts "how do you want to search ?"
+    key = gets.chomp.to_sym
     puts "Who are your looking for ?"
-    attribute = gets.chomp.to_s
-    Contact.find_by(attribute)
+    value = gets.chomp.to_s
+    argu = {key =>value}
+    p Contact.find_by(argu)
   end
 
 
@@ -90,6 +92,7 @@ end
 at_exit do
   ActiveRecord::Base.connection.close
 end
+
 a_crm_app = CRM.new ("My CRM")
 a_crm_app.main_menu
 # puts Contact.all.inspect
